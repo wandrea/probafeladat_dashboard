@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html Lang="en">
+
+<head>
+    <meta charset="utf-8" content="width=device-width, initial-scale=1">
+    <title>dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-chartjs/2.6.5/vue-chartjs.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="javascripts.js"></script>
+
+</head>
+
+<body class="container-fluid openSans" onload="myFunction()">
+
+    <div class="wrapper" id="app">
+
+
+        <nav class="sidebar">
+            <div class="sidebarHeader">
+                <div class="fullSidebarHeader">
+                    <img class="img-responsive avatar" src="wob.jpg" />
+
+                    <h3>
+                        <b>RAPID</b>LISTING</h3>
+                </div>
+                <span class="hiddenIcon glyphicon glyphicon-menu-hamburger"></span>
+
+
+            </div>
+
+            <div class="actualAccount">
+                <h4>Leanne Graham</h4>
+                <p>account owner</p>
+            </div>
+
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-home"></i>
+                        <p>
+                            DASHBOARD</p>
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon   glyphicon-list"></i>
+                        <p> INVENTORY</p>
+                    </a>
+                </li>
+                <li class="divider"></li>
+
+
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-list-alt"></i>
+                        <p>LISTING</p>
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-picture"></i>
+                        <p>IMAGES</p>
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+
+                    <a href=".homeSubmenu" data-toggle="collapse">
+                        <i class="glyphicon glyphicon-cog"></i>
+                        <p>SETTINGS</p>
+                    </a>
+                    <li class="divider"></li>
+
+
+                    <ul class="homeSubmenu collapse list-unstyled subsidebar">
+
+                        <li>
+                            <a href="#">COMPANY ACCOUNT</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">PROFILE SETTINGS</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">EBAY ACCOUNTS</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">TEAM MEMBERS</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">PLAN & PAYMENT</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">INVENTORY SETTINGS</a>
+                        </li>
+                    </ul>
+
+                </li>
+
+
+            </ul>
+
+
+            <div class="otherOption">
+                <h5>QUICK LINKS</h5>
+                <h4>ADD NEW ITEM</h4>
+                <h4>CREATE NEW LISTING</h4>
+            </div>
+            <div class="sidemenuFooter  navbar-fixed-bottom">
+                <p>All rights reserved for World of Books Lts. 2017</p>
+            </div>
+
+
+        </nav>
+
+
+        <div id="content">
+            <header>
+                <nav class="row  displayHeader">
+                    <div class="col-md-2"></div>
+
+                    <div class="col-md-7 topPadding">
+                        <div class="row dropdown input-group " id="resultList">
+                            <span class="ion-ios-search  input-group-addon inputIcon"></span>
+                            <div class="col-md-11">
+                                <input id="input" type="text" placeholder="SEARCH IN RAPIDLISTING" v-model="searchText" @keyup="onSearchChanged">
+                            </div>
+                            <div class="col-md-1">
+                                <span id="searchclear" class="glyphicon glyphicon-remove-circle  d-none " @click="clearSearch"></span>
+                            </div>
+                            <div class="dropdown-menu col-md-12 row">
+                                <ul class="col-md-5 submenu">
+                                    <div class="row listhead">
+                                        <li class="col-md-8">
+                                            <p>USERS</p>
+                                        </li>
+
+                                        <a class="col-md-4" href="#">See all results</a>
+
+                                    </div>
+                                    <div class="row">
+                                        <li>
+
+                                            <p>Anakin Skywalker</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <p> Hahn Solo </p>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <p>Leanne Graham</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <p>Kurtis Weissnat</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <p>Ervin Howell</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                    </div>
+                                    <div class="row listhead">
+                                        <li class="col-md-8 ">
+                                            <p>ITEMS</p>
+                                        </li>
+
+                                        <a class="col-md-4" href="#">See all results</a>
+
+                                    </div>
+                                    <ul class="row">
+                                        <li class="col-md-8">
+                                            <p>item1</p>
+                                        </li>
+                                        <span class="col-md-4 smallSpot pull-right "></span>
+
+                                        <li class="col-md-12 divider"></li>
+                                        <li class="col-md-8">
+                                            <p> item2 </p>
+                                        </li>
+                                        <span class="col-md-4 pull-right smallSpot"></span>
+                                        <li class="col-md-12 divider"></li>
+                                        <li class="col-md-8">
+                                            <p>item3</p>
+                                        </li>
+                                        <span class="col-md-4 smallSpot pull-right "></span>
+
+                                    </ul>
+                                </ul>
+                                <div class="col-md-1"></div>
+
+                                <ul class="col-md-5 submenu">
+                                    <div class="row listhead">
+                                        <li class="col-md-8 ">
+                                            <p>CITIES</p>
+                                        </li>
+
+                                        <a class="col-md-4" href="#">See all results</a>
+
+                                    </div>
+                                    <div class="row">
+                                        <li>
+                                            <p>South Elvis</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <p>Lebsackbury</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <p>Howemouth</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <p>Roscoeview</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <p>Wisokyburgh</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <p>McKenziehaven</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <p>Aliyaview</p>
+                                        </li>
+                                        <li class="divider"></li>
+                                    </div>
+                                </ul>
+                                <div class="col-md-1"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-2 topPadding">
+
+                        <div class="dropdown row">
+                            <a class=" dropdown-toggle " data-toggle="dropdown">XYZ EBAY ACCOUNT
+                                <span class="ion-ios-arrow-down  pull-right"></span>
+                            </a>
+                            <ul class="dropdown-menu row">
+                                <li class="col-md-11">
+                                    <p>XYZ eBay account</p>
+                                </li>
+                                <span class="col-md-1 smallSpot"></span>
+                                <li class="col-md-12 divider"></li>
+                                <li class="col-md-11">
+                                    <p> Anakin Skywalker eBay account</p>
+                                </li>
+                                <span class="col-md-1 smallSpot"></span>
+                                <li class="col-md-12 divider"></li>
+                                <li class="col-md-11">
+                                    <p> Hahn Solo eBay account</p>
+                                </li>
+                                <span class="col-md-1 smallSpot"></span>
+                                <li class="col-md-12 divider"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-1">
+
+
+                        <span class=" nav-item dropdown ">
+                            <a class="ion-ios-bell  dropdown-toggle iconSize" data-toggle="dropdown" id="leftBorder"> </a>
+                            <ul class="dropdown-menu row" id="leftPadding">
+                                <li class="col-md-10">
+                                    <p>eBay order job finished succesfully</p>
+                                </li>
+                                <li class="col-md-2">07:26</li>
+                                <li class="col-md-12 divider"></li>
+                                <li class="col-md-10">
+                                    <p>eBay order job finished succesfully</p>
+                                </li>
+                                <li class="col-md-2">07:26</li>
+                                <li class="col-md-12 divider"></li>
+                                <li class="col-md-10">
+                                    <p>eBay order job finished succesfully</p>
+                                </li>
+                                <li class="col-md-2">07:26</li>
+                                <li class="col-md-12 divider"></li>
+                                <li class="col-md-10">
+                                    <p>eBay order job finished succesfully</p>
+                                </li>
+                                <li class="col-md-2">07:26</li>
+                                <li class="col-md-12 divider"></li>
+
+                            </ul>
+
+
+
+                        </span>
+
+                        <span class="ion-ios-plus-outline iconSize" id="greenBg" @click="changeHeader"></span>
+                        <span class="ion-android-exit iconSize"></span>
+                    </div>
+
+                </nav>
+                <div class="noneDisplayHeader row">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-3 row textBlue smallFontSize topPadding">
+                        <div class="col-md-6  ">
+                            <a>Add new inventory item</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a>Create new listing</a>
+                        </div>
+                    </div>
+                    <div class="col-md-1 iconRight">
+
+                        <span class=" ion-ios-plus-outline icon  iconSize" id="greenBg" @click="changeHeader"></span>
+                        <span class=" ion-android-exit icon  iconSize"></span>
+
+                    </div>
+
+                </div>
+            </header>
+            <main>
+                <div class="row progmenu">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 text-center title"> YOUR ACCOUNT IS NOT YET COMPLETE
+
+                        <ul class="progressbar ">
+                            <li class="active">Set up your companies account data</li>
+
+                            <li class="active">Join an eBay account to your profile</li>
+                            <li>Invite your colleagues</li>
+                            <li>Create an invertory item</li>
+                            <li>List an item on eBay</li>
+                        </ul>
+
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+
+
+                </div>
+                <div class="row " id="visitorStat">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p class="title text-center">NUMBER OF VISITORS</p>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="title text-center">VISITORS STATISTICS</p>
+                            </div>
+                            <div class="row">
+                                <bar-chart :data="barChartData" :options="barChartOptions" class="col-md-4"></bar-chart>
+                                <doughnut-chart :data="doughnutChartData" :options="doughnutChartOptions" class="col-md-2 offsetTop"></doughnut-chart>
+
+                                <div class="col-md-5 offsetTop">
+                                    <div class="row">
+                                        <p class="totalSumNum ">{{sum}}</p>
+                                        <p class="totalSum ">total number of visitors</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3" v-for="data in doughnutData">
+                                            <div class="row">
+                                                <div class="value  col-md-6">{{data.value}}</div>
+                                                <span class="valueColor col-md-6" v-bind:style="{ color: data.color}"></span>
+                                            </div>
+                                            <div class="row">
+                                                <div class="label  col-md-12">{{data.label}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="percent  col-md-12">{{data.percent}}</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row listcontent">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p class="title">SOLD ITEMS IN LAST 24 HRS</p>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-1">
+                                        <a class="textBlue listtext">see full list</a>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-1">
+                                        <a class="textBlue listtext">see full list</a>
+                                    </div>
+                                </div>
+                                <div class="row listtext">
+                                    <div class="col-md-6">
+                                        <table class="table ">
+                                            <tr class="row" v-for="item in items">
+                                                <td class="col-md-6 ">
+                                                    {{item.title}}
+                                                </td>
+                                                <td class="col-md-2 ">
+                                                    {{item.id}}
+                                                </td>
+                                                <td class="col-md-2 ">
+                                                    {{item.userId}}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <table class="table">
+                                            <tr class="row " v-for="item in items">
+                                                <td class="col-md-6 ">
+                                                    {{item.title}}
+                                                </td>
+                                                <td class="col-md-2 ">
+                                                    {{item.id}}
+                                                </td>
+                                                <td class="col-md-2">
+                                                    {{item.userId}}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+
+                <div class="row userperformance">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="row ">
+                            <div class="col-md-12 text-center title">USER PERFORMANCE</div>
+                            <div class="row">
+
+                                <ul class="list-inline">
+                                    <li class="list-inline-item col-md-2" v-for="user in myusers">
+                                        <div>
+                                            <img class="avatar center-block img-responsive" :src="user.thumbnailUrl" />
+                                        </div>
+                                        <div class="listitems"> {{user.name}}</div>
+                                        <div class="listitems"> {{user.city}}</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-2"></div>
+
+                </div>
+
+
+            </main>
+
+            <footer class="row smallFontSize">
+                <div class="col-md-2"></div>
+                <div class="col-md-1 "> Home</div>
+                <div class="col-md-1">Privary policy</div>
+                <div class="col-md-1">Terms of Service</div>
+                <div class="col-md-1">Help Center</div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-1 ">
+                    <span class="ion-social-facebook icon"></span>
+                    <span class="ion-social-twitter icon"></span>
+                    <span class="ion-social-googleplus-outline icon "></span>
+                </div>
+                <div class="col-md-1"></div>
+            </footer>
+
+
+
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>
