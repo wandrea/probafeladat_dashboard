@@ -3,7 +3,7 @@
 
 function myFunction() {
     Chart.defaults.global.defaultFontFamily = "'Open Sans', 'sans-serif'";
-    Chart.defaults.global.defaultFontSize = 14;
+    Chart.defaults.global.defaultFontSize = 11;
     Chart.defaults.global.defaultFontColor = '#A1A1A1';
 
 
@@ -20,34 +20,34 @@ function myFunction() {
             doughnutColors: [],
             doughnutData: [
                 {
-                    label: 'Winter',
+                    label: 'active listings',
                     value: 0,
                     percent: 0,
                     color: '#A8CDA7',
                 },
                 {
-                    label: 'Spring',
+                    label: 'sold items',
                     value: 0,
                     percent: 0,
                     color: '#199ED9',
                 },
                 {
-                    label: 'Summer',
+                    label: 'unsold items',
                     value: 0,
                     percent: 0,
                     color: '#C0C0C0',
                 },
                 {
-                    label: 'Autumn',
+                    label: 'scheduled items',
                     value: 0,
                     percent: 0,
-                    color: '#FFD700',
+                    color: 'white',
                 },
             ],
             doughnutChartOptions: {
                 responsive: true,
-                maintainAspectRatio: true,
-                cutoutPercentage: 80,
+                maintainAspectRatio: false,
+                cutoutPercentage: 75,
 
 
                 legend: {
@@ -59,65 +59,61 @@ function myFunction() {
             barColor: '#A8CDA7',
             barData: [
                 {
-                    label : 'January',
+                    label : '03 09',
                     value : 468,
-                    season : 'Winter'
+                    season : 'active listings'
                 },            
                 {
-                    label : 'February',
+                    label : '04 09',
                     value : 990,
-                    season : 'Winter'
+                    season : 'active listings'
                 },            
                 {
-                    label : 'March',
+                    label : '05 09',
                     value : 1029,
-                    season : 'Spring'
+                    season : 'active listings'
                 },            
                 {
-                    label : 'April',
+                    label : '06 09',
                     value : 502,
-                    season : 'Spring'
+                    season : 'active listings'
                 },
                 {
-                    label : 'May',
+                    label : '07 09',
                     value : 833,
-                    season : 'Spring'
+                    season : 'sold items'
                 },
                 {
-                    label : 'June',
+                    label : '08 09',
                     value : 1011,
-                    season : 'Summer'
+                    season : 'sold items'
                 },
                 {
-                    label : 'July',
+                    label : '09 09',
                     value : 947,
-                    season : 'Summer'
+                    season : 'sold items'
                 },
                 {
-                    label : 'August',
+                    label : '10 09',
                     value : 750,
-                    season : 'Summer'
+                    season : 'unsold items'
                 },
                 {
-                    label : 'September',
+                    label : '11 09',
                     value : 654,
-                    season : 'Autumn'
+                    season : 'unsold items'
                 },
                 {
-                    label : 'October',
+                    label : '12 09',
                     value : 521,
-                    season : 'Autumn'
+                    season : 'unsold items'
                 },
                 {
-                    label : 'November',
+                    label : '13 09',
                     value : 1002,
-                    season : 'Autumn'
+                    season : 'unsold items'
                 },
-                {
-                    label : 'December',
-                    value : 456,
-                    season : 'Winter'
-                },
+               
 
             ],
             barChartOptions: {
@@ -189,14 +185,15 @@ function myFunction() {
             onSearchChanged: function () {
                 var resultList = document.getElementById("resultList");
             
-                var clearSearchButton=document.getElementById("searchclear");
+                var clearSearchButton=document.getElementById("searchClear");
                 if (this.searchText.length > 2) {
                     clearSearchButton.classList.remove("d-none");
-                    resultList.classList.add("open");
+                    resultList.classList.add("resultListShow");
+                    resultList.classList.remove("d-none");
              
                 } else {
-                    resultList.classList.remove("open");
-               
+                    resultList.classList.remove("resultListShow");
+                    resultList.classList.add("d-none");
                     clearSearchButton.classList.add("d-none");
                 }
             },
@@ -262,8 +259,8 @@ function myFunction() {
                     labels: this.barLabels,
                     datasets: [
                         {
-                            label: 'number of visitors',
                             data: this.barValues,
+                            label: 'listed item on eBay',
                             backgroundColor: this.barColor,
                         }
                     ]
